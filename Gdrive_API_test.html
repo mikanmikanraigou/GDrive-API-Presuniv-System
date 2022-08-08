@@ -1,0 +1,118 @@
+#{use_css__default_page}
+<script src="https://apis.google.com/js/api.js"></script>
+<style>        
+    /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); */
+    .main_body{
+        font-family: 'Noto Sans KR', sans-serif;
+        margin: 0px;
+        text-align: center;
+    }
+    .header{
+        background-color: rgb(224, 224, 224, 0.5);
+        padding: 0px 150px;
+        line-height: 80px;
+        height: 80px;
+        border-bottom: 1px solid rgb(224, 224, 224, 0.6);
+    }
+    /* .title{
+        font-weight: 700;
+        font-size: 30px;
+        float: left;
+        color: #3c84f8;
+    } */
+    /* .auth-buttons{
+        float: right;
+    } */
+    .signin, .signout{
+        border: 0px;
+        padding: 10px 70px;
+        background-color: #3c84f8;
+        color: white;
+        outline: none;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+        display: none;
+    }
+    .actions{
+        padding: 0px 300px;
+    }
+    textarea{
+        width: calc(100% - 40px);
+        height: 450px;
+        margin: 20px auto;
+        background-color: rgb(224, 224, 224, 0.2);
+        border: 2px solid rgb(224, 224, 224, 1);
+        outline: none;
+        padding: 10px 20px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 18px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .upload{
+        border: 0px;
+        outline: none;
+        padding: 8px 30px;
+        display: block;
+        font-size: large;
+        border: 2px solid rgb(224, 224, 224, 1);
+        font-family: 'Noto Sans KR', sans-serif;
+        cursor: pointer;
+        float: right;
+        color: #3c84f8;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#{title}</title>
+</head>
+<body>
+    <div class="col-md-12">
+        <div class="panel panel-primary panel-condensed">
+            <div class="panel-heading"><h4>Google Drive Integration Test</h4></div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group auth-buttons">
+                <button class="btn btn-primary" type="button" id="signin">Sign in to google</button>
+                <button class="btn btn-danger" type="button" id="signout">Sign out from google</button>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="title"></div>
+
+    </div>
+    <div class="main_body actions">
+        <textarea name="" id="" cols="30" rows="10" placeholder="Enter text here"></textarea>
+        <button class="upload">Click Upload</button>
+    </div>
+</body>
+</html>
+<script>
+    const _CLIENT_ID = '732737240623-assk4q8jtob0m8ee3t4v2vjua6tdg32n.apps.googleusercontent.com';
+    const _API_KEY = 'AIzaSyAzkArz2Y0fWnIGwHBvWv4isDzdHbL3SVI';
+    const _DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
+    const _SCOPES = 'https://www.googleapis.com/auth/drive';
+    let button_signin = $('#signin').click; 
+    let button_signout = $('#signout').click; 
+
+    function handleClientLoad() {
+        gapi.load('client:auth', initClient);
+    }
+
+    function initClient() {
+        gapi.client.init({
+            apiKey: _API_KEY,
+            clientID:_CLIENT_ID,
+            discoveryDocs:_DISCOVERY_DOCS,
+            scopes: _SCOPES,
+        }).then(function () {
+            // gapi.auth2.getAuthInstance()
+        })
+    }
+</script>
