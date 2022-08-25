@@ -19,10 +19,10 @@ if (isset($_GET['code'])) {
 
         if (!empty($data)) {
 
-            $result = $GHelper->GetGWorkspace_ListUser($data, 'heri.kurniawan%40student.president.ac.id');
+            $result = $GHelper->GetGWorkspace_ListUser($data, '');
             var_dump($result);
             echo '<hr>';
-            $result = $GHelper->GetGWorkspace_ListUser($data, 'galang.izatul%president.ac.id');
+            $result = $GHelper->GetGWorkspace_ListUser($data, '');
             var_dump($result);
             echo '<hr>';
 
@@ -32,14 +32,14 @@ if (isset($_GET['code'])) {
                     'given_name' => 'Budi',
                     'full_Name' => 'Budi Pekerti'
                 ],
-                'password' => 'presuniv1234',
-                'primary_email' => 'bayu.budi.pekerti@student.president.ac.id',
-                'orgUnitPath' => '/Student/ACC/2021',
+                'password' => '',
+                'primary_email' => '',
+                'orgUnitPath' => '',
             );
             $result = $GHelper->GetGWorkspace_CreateUser($data, $user_data);
             var_dump($result);
             $_SESSION['list_users'] = $data;
-            $result = $GHelper->GetGWorkspace_ListUser($data, 'heri.kurniawan%40student.president.ac.id');
+            $result = $GHelper->GetGWorkspace_ListUser($data, '');
             var_dump($result);
             echo '<hr>';
             
